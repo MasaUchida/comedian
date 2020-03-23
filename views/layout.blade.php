@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ get_template_directory_uri() }}/style.css">
 </head>
 <body>
-    @include('share.header')
+    @include('header')
     <main>
       @yield('content')
     </main>
-    @include('share.footer')
+    @include('footer')
 </body>
 </html>
