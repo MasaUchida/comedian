@@ -6,6 +6,7 @@
             @while (have_posts())
                 <?php the_post(); ?>
                 <article>
+                    <img src="{{the_permalink()}}" alt="">
                     <h1>{{ the_title() }}</h1>
                     <div class="content">
                         {{ the_content() }}

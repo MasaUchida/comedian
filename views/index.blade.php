@@ -5,11 +5,13 @@
         <ul>
             @if (have_posts())
                 @while (have_posts())
-                    @include('card')
                     {{the_post()}}
-                    <li>
-                        <a href="{{ the_permalink() }}">{{ the_title() }}</a>
-                    </li>
+                    <div class="{{the_ID()}}">
+                        <a href="{{ the_permalink() }}">{{ the_post_thumbnail() }}
+                            <h3>{{the_title()}}</h3>
+                            <p>{{the_content()}}</p>
+                        </a>
+                    </div>
                 @endwhile
             @endif
         </ul>
