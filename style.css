@@ -1,26 +1,44 @@
-@charset "UTF-8";
 /*!
 Theme Name: MyTheme
 Author: Masahiro Harada
 Description: My Theme
 */
-.header--logo {
-  display: block;
-  float: left;
-  background-color: gray;
+main {
+  width: 1080px;
+  margin: 0 auto;
 }
 
-.header--container {
-  display: block;
-  float: right;
+.key-container {
+  display: flex;
+  margin: 0 -16px;
 }
-.header--container ul {
+
+.main-container {
   display: flex;
 }
-.header--container ul li {
-  margin-right: 32px;
+
+.comedian {
+  width: 33%;
+  padding: 0 16px;
 }
 
-body h1 {
-  color: red;
+img {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  display: flex;
+  margin-bottom: 32px;
+}
+.post .column-img {
+  width: 30%;
+}
+
+.twitter-share-button {
+  display: block;
 }

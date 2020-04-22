@@ -1,3 +1,3 @@
 <footer>
-    This is a footer.
+    {{wp_footer()}}
 </footer>
