@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    @include('innerhead')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ bloginfo('name') }}</title>
+    {{wp_head()}}
 </head>
 <body>
-    @include('header')
+    @include('component.header')
     <main>
-        @if(is_home())
             @yield('index')
-        @elseif(is_singular('comedian'))
-            @yield('comedian')
-        @elseif(is_singular('criticism'))
-            @yield('criticism')
-        @else
-            <p>エラー</p>
-        @endif
     </main>    
-    @include('footer')
+    @include('component.footer')
 </body>
 </html>

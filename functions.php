@@ -117,12 +117,48 @@ function create_post_type(){
     'supports' => $criticism_support,
     'menu_icon' => 'dashicons-admin-users',
     )
+
+
 );
 }
 
 
 add_action('init', 'create_post_type' );
 
+/**
+ * register-taxonomy
+ */
+
+function create_taxonomy(){
+
+    $labels = array(
+		'name'              => _x( '芸人名登録', 'taxonomy general name' ),
+		'singular_name'     => _x( '芸人名登録', 'taxonomy singular name' ),
+		'search_items'      => __( '芸人検索' ),
+		'all_items'         => __( 'All Genres' ),
+		'parent_item'       => __( '親グループ' ),
+		'parent_item_colon' => __( '親グループ:' ),
+		'edit_item'         => __( '芸人タグ編集' ),
+		'update_item'       => __( '更新' ),
+		'add_new_item'      => __( '新規芸人登録' ),
+		'new_item_name'     => __( 'New Genre Name' ),
+		'menu_name'         => __( '芸人名登録' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'comedian' ),
+	);
+
+	register_taxonomy( 'comedian-name', array('comedian','criticism'), $args );
+
+}
+
+add_action('init', 'create_taxonomy' );
 
 /**
  * register-menu
@@ -133,6 +169,7 @@ add_action('after_setup_theme','register_my_menu');
 function register_my_menu(){
     register_nav_menu( 'primary', ( 'メニューヘッダ' ) );
 }
+
 
 /**
  * add-sidebar
@@ -155,6 +192,7 @@ function create_sidebar() {
         'name' => ( 'single-sidebar'),
         'id' => 'single-sidebar',
         'description' => ( 'シングルサイドバー'),
+        'class' => '',
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h2 class="widgettitle">',

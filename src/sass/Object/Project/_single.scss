@@ -1,0 +1,34 @@
+/*l c p u*/
+$innerwidth:880px;
+
+.p-single__backImage{
+    height: 320px;
+    background-color: #BBBBBB;
+    margin-bottom: -240px;
+}
+
+.p-single__main{
+    width: $innerwidth;
+    margin: 0 auto;
+    
+}
+
+.p-single__image{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    padding-top: 66.66666%;
+    margin-bottom: 32px;
+}
+
+.p-single__contents{
+    display: flex;
+}
+
+.p-single__document{
+    width: 70%;
+}
+
+.p-single__sidebar{
+    width: 30%;
+}

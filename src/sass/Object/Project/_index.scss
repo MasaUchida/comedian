@@ -1,0 +1,40 @@
+main{
+    width: 1080px;
+    margin: 0 auto;
+  }
+  
+  .key-container{
+    display: flex;
+    margin: 0 -16px;
+  }
+  
+  .main-container{
+    display: flex;
+  }
+  
+  .comedian {
+    width: 33%;
+    padding: 0 16px;
+  }
+  
+  
+  img{
+    width: 100%;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  .post{
+    display: flex;
+    margin-bottom: 32px;
+  
+    .column-img{
+      width: 30%;
+    }
+  }
+  
+  .twitter-share-button{
+    display: block;
+  }

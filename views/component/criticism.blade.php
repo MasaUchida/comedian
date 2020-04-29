@@ -1,12 +1,12 @@
-<!--set query2-->
+{{--set query--}}
 @php
-    $query2 = new WP_Query( array('post_type' => 'criticism') );
+    $query = new WP_Query( array('post_type' => 'criticism') );
 @endphp
 
-<!--query2 ioop-->
-@if($query2 -> have_posts()) 
-    @while($query2 -> have_posts())
-        {{$query2 -> the_post()}}
+{{--query loop--}}
+@if($query -> have_posts()) 
+    @while($query -> have_posts())
+        {{$query -> the_post()}}
 
             <a href="{{the_permalink()}}">
                 <article class="post">

@@ -1,0 +1,12 @@
+$gattar: 16px;
+
+.p-rerationpost__container{
+    margin: 0 -$gattar;
+    display: flex;
+}
+
+.p-rerationpost__card{
+    margin: 0 $gattar;
+    padding-bottom: 24px;
+    width: 25%;
+}

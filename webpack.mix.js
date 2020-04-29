@@ -5,4 +5,9 @@ mix
   .options({
       processCssUrls: false
    });
-   
+
+mix
+  .sass('src/sass/Foundation/_reset.scss', './reset.css')
+  .options({
+       processCssUrls: false
+    });

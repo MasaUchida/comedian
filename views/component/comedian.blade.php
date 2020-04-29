@@ -1,13 +1,13 @@
 <!--set query1-->
 @php
-    $query1 = new WP_Query( array('post_type' => 'comedian') );
+    $query = new WP_Query( array('post_type' => 'comedian') );
 @endphp
 
 <!--query1 loop-->
 
-@if($query1 -> have_posts()) 
-    @while($query1 -> have_posts())
-        {{$query1 -> the_post()}}
+@if($query -> have_posts()) 
+    @while($query -> have_posts())
+        {{$query -> the_post()}}
 
             <article class="comedian">  
                 <a href="{{the_permalink()}}"> 

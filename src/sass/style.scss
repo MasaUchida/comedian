@@ -3,43 +3,36 @@ Theme Name: MyTheme
 Author: Masahiro Harada
 Description: My Theme
 */
-main{
-  width: 1080px;
-  margin: 0 auto;
-}
+/*@charset "utf-8";
 
-.key-container{
-  display: flex;
-  margin: 0 -16px;
-}
+/*
+*Foundation
+*/
 
-.main-container{
-  display: flex;
-}
+@import "./Foundation/reset";
+@import "./Foundation/variables";
+@import "./Foundation/base";
 
-.comedian {
-  width: 33%;
-  padding: 0 16px;
-}
+/*
+*Layout
+*/
 
 
-img{
-  width: 100%;
-}
 
-body{
-  margin: 0;
-  padding: 0;
-}
-.post{
-  display: flex;
-  margin-bottom: 32px;
+/*
+*Component
+*/
+@import "./Object/Component/card";
 
-  .column-img{
-    width: 30%;
-  }
-}
+/*
+*Project
+*/
 
-.twitter-share-button{
-  display: block;
-}
+@import "./Object/Project/single";
+@import "./Object/Project/rerationpost";
+
+/*
+*Utility
+*/
+
+
