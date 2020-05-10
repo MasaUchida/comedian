@@ -1,43 +1,54 @@
-{{--valiables init--}}
+{{--
+*
+*This file is echo reration-post for single page
+*
+--}}
+
+{{--variables init--}}
 @php
     global $post; 
-    $term_name = '';
-    $ttaxonomy_name = '';
-    $success_flag = false;
+    $this_post_ID = $post->ID;
+
+    //query variables
+    $target_post_type = array('comedian','criticism');
+    $page_num = 4;
     $query = null;
+
+    //tax variables
+    $taxonomy_name = 'comedian-name';
+    $this_post_terms = get_the_terms($this_post_ID, $taxonomy_name);//記事の付随情報取得
+    $term_name_array = array();
+
+    //loop variables
+    $loop_counter = 0;
 @endphp
 
-{{--get terms--}}
-@php
-    $terms = get_the_terms($post->ID, 'comedian-name');
-@endphp
-
-{{--set names for query--}}
-@if($terms)
+{{--make array of this post terms--}}
+@if($this_post_terms)
     @php
-        $term_name = $terms[0]->name;
-        $taxonomy_name = $terms[0]->taxonomy;
-        $success_flag = true;
+        for ($i=0; $i < count($this_post_terms); $i++) { //付随カテゴリの配列作成
+            $term_name_array[$i] = $this_post_terms[$i]->name;
+        }
     @endphp
 @endif
 
 {{--set query--}}
-@if ($success_flag)
+@if (!empty($term_name_array))
     @php
         $args = array(
-        'post_type' => array('comedian','criticism'),
-        'posts_per_page' => 4,
+        'post_type' => $target_post_type,
+        'posts_per_page' => $page_num,
         'tax_query' => array(
                 array(
                     'taxonomy' => $taxonomy_name,
-                    'terms' => $term_name,
+                    'terms' => $term_name_array,
                     'field'    => 'slug',
                     'include_children' => true,  
                 ),
             ),
+        'post__not_in' => array($this_post_ID),
         );
         $query = new WP_Query($args);
-        var_dump($query);
     @endphp
 @endif
 
@@ -47,13 +58,13 @@
         @if ($query -> have_posts())
             @while($query -> have_posts())
                 {{$query -> the_post()}}
-                    <div class="c-card p-rerationpost__card">
-                        <div class="c-card__image" style="background-image:url({{the_post_thumbnail_url()}}) ;"></div>
-                        <section class="c-card__text">
-                            <h4>{{the_title()}}</h4>
-                            <p>{{get_the_content()}}</p>
-                        </section>
-                    </div>
+                        <div class="c-card p-rerationpost__card">
+                            <div class="c-card__image" style="background-image:url({{the_post_thumbnail_url()}}) ;"></div>
+                            <section class="c-card__text">
+                                <h4>{{the_title()}}</h4>
+                                <p>{{get_the_content()}}</p>
+                            </section>
+                        </div>
             @endwhile
         {{wp_reset_postdata()}}
         @endif

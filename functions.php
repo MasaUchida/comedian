@@ -247,6 +247,7 @@ add_action( 'pre_get_posts', 'change_posts_per_page' );
  * オリジナル関数
  */
 
+//ページネーションのページ番号で必要な投稿を取ってくる関数 
 function get_query_for_archive($posttype,$pagenum = 6){
     $paged = (get_query_var( 'paged' ))? get_query_var( 'paged' ) : 1;
     $args = array(
