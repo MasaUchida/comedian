@@ -3,9 +3,6 @@
 @section('index')
 <div class="p-single__backImage"></div>
     <div class="p-single__main">
-        {{--main--}}
-        {{--ADD categoly tag valuation--}}
-
         @if(have_posts())
             @while(have_posts())
                 {{the_post()}}
@@ -25,8 +22,5 @@
                         @include('component.reration-post')
             @endwhile
         @endif
-        {{--rerationPost--}}
-        {{--sidebar--}}
-        
     </div>
 @endsection

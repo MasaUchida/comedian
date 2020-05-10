@@ -42,19 +42,16 @@ img {
   display: block;
 }
 
-article > * + * {
-  margin-top: 1em;
-}
-
+/*article>*+*{
+    margin-top:1em
+}*/
 input, button, textarea, select {
   font: inherit;
 }
 
-img:not([alt]) {
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-}
-
+/*img:not([alt]){
+    filter:blur(10px)
+}*/
 @media (prefers-reduced-motion: reduce) {
   * {
     -webkit-animation-duration: 0.01ms !important;
@@ -98,14 +95,60 @@ main {
   margin: 0 auto;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #000000;
+}
+
+a:visited {
+  color: #000000;
+}
+
 /*
 *Layout
 */
+.l-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #b1b1b1;
+  font-size: 1.4rem;
+  align-items: center;
+  text-decoration: none;
+}
+
+.l-header__image {
+  margin-left: 32px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.l-header__container {
+  display: flex;
+}
+
+.menu-item a {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 120px;
+}
+.menu-item a:link {
+  color: #272727;
+}
+.menu-item a:visited {
+  color: #8f5858;
+}
+
 /*
 *Component
 */
-.c-card__container {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.12);
+.c-card {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .c-card__image {
@@ -117,12 +160,113 @@ main {
 
 .c-card__text {
   padding: 0 16px;
-  height: 40%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 /*
 *Project
 */
+.p-index__key {
+  margin-bottom: 80px;
+  display: flex;
+}
+
+.p-index__container {
+  width: 1120px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.p-index__main {
+  margin-right: 24px;
+  width: 70%;
+}
+
+.p-index__title {
+  border-bottom: solid 1px #ff0000;
+}
+
+.p-index__post-wrapper {
+  margin-bottom: 64px;
+}
+
+.p-index__comedian-container {
+  margin: 0 -16px;
+  display: flex;
+}
+
+.p-index__sidebar {
+  width: 30%;
+}
+
+.p-comedian__card-container {
+  width: 33.3333%;
+  padding: 0 8px;
+}
+
+.p-comedian__card {
+  padding: 0 0 16px 0;
+}
+
+.p-comedian__text {
+  padding: 0 12px;
+}
+
+.p-comedian__title {
+  margin-bottom: 0px;
+}
+
+.p-comedian__date {
+  font-size: 1.2rem;
+  margin-top: 0.4em 0;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.p-criticism__post {
+  padding: 16px;
+  display: flex;
+}
+
+.p-criticism__iamge-container {
+  width: 240px;
+  height: 160px;
+  margin-right: 24px;
+}
+
+.p-criticism__iamge {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.p-criticism__text-container {
+  position: relative;
+  width: 60%;
+}
+
+.p-criticism__title {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.p-criticism__text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.p-criticism__date {
+  position: absolute;
+  bottom: 0px;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
 /*l c p u*/
 .p-single__backImage {
   height: 320px;
@@ -153,6 +297,67 @@ main {
 
 .p-single__sidebar {
   width: 30%;
+}
+
+/*l c p u*/
+/*.p-archive__backImage{
+    height: 320px;
+    background-color: #BBBBBB;
+    margin-bottom: -240px;
+}*/
+.p-archive__main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.p-archive__wrapper {
+  margin: 0 -16px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.p-archive__card-container {
+  width: 33.33333%;
+  padding: 0 16px;
+}
+
+.p-archive__card {
+  display: block;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.p-archive__card:link {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.p-archive__card:visited {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.p-archive__image {
+  margin-bottom: 24px;
+}
+
+.p-archive__title {
+  margin: 0.5em 0 0 0;
+}
+
+.p-archive__date {
+  font-size: 1.2rem;
+  margin-top: 0.4em 0;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.p-archive__description {
+  line-height: 1.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .p-rerationpost__container {

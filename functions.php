@@ -17,6 +17,27 @@ if (!function_exists('render_blade')) {
 }
 
 /**
+ * add style sheets
+ */
+
+add_action('wp_enqueue_scripts', 'enqueue_stylesheets' );
+
+function enqueue_stylesheets(){
+    wp_enqueue_style(
+        'reset',
+        get_template_directory_uri() . '/reset.css'
+    );
+    wp_enqueue_style(
+        'main',
+        get_template_directory_uri() . '/style.css'
+    );
+    //wp_enqueue_script(
+    //    'main',
+    //    get_template_directory_uri() . '/style.css'
+    //);
+}
+
+/**
  * support thumbnail img
  */
 
@@ -200,19 +221,93 @@ function create_sidebar() {
     ) );
 }
 
+remove_filter('the_content', 'wpautop');
+
+
 /**
- * add style sheets
+ * 記事数指定
+ * ここで指定した数字は、
  */
 
-add_action('wp_enqueue_scripts', 'enqueue_stylesheets' );
+/*function change_posts_per_page($query) {
+    if ( is_admin() || ! $query->is_main_query() )
+        return;
+ 
+    if ( $query->is_post_type_archive('comedian') ) { 
+        $query->set( 'posts_per_page', '3' );
+    }
+    elseif( $query->is_post_type_archive('criticism') ){
+        $query->set( 'posts_per_page', '1' );
+    }
+}
+add_action( 'pre_get_posts', 'change_posts_per_page' );
+*/
 
-function enqueue_stylesheets(){
-    wp_enqueue_style(
-        'reset',
-        get_template_directory_uri() . '/reset.css'
-    );
-    wp_enqueue_style(
-        'main',
-        get_template_directory_uri() . '/style.css'
-    );
+/**
+ * オリジナル関数
+ */
+
+function get_query_for_archive($posttype,$pagenum = 6){
+    $paged = (get_query_var( 'paged' ))? get_query_var( 'paged' ) : 1;
+    $args = array(
+        'post_type' => $posttype,
+        'posts_per_page' => $pagenum,
+        'paged' => $paged,
+        );
+    $query = new WP_Query($args); 
+    return $query;
+}
+
+function pagination( $pages, $paged, $range = 2, $show_only = false ) {
+
+    $pages = ( int ) $pages;    //float型で渡ってくるので明示的に int型 へ
+    $paged = $paged ?: 1;       //get_query_var('paged')をそのまま投げても大丈夫なように
+
+    //表示テキスト
+    $text_first   = "« 最初へ";
+    $text_before  = "‹ 前へ";
+    $text_next    = "次へ ›";
+    $text_last    = "最後へ »";
+
+    if ( $show_only && $pages === 1 ) {
+        // １ページのみで表示設定が true の時
+        echo '<div class="pagination"><span class="current pager">1</span></div>';
+        return;
+    }
+
+    if ( $pages === 1 ) return;    // １ページのみで表示設定もない場合
+
+    if ( 1 !== $pages ) {
+        //２ページ以上の時
+        echo '<div class="pagination"><span class="page_num">Page ', $paged ,' of ', $pages ,'</span>';
+        if ( $paged > $range + 1 ) {
+            // 「最初へ」 の表示
+            echo '<a href="', get_pagenum_link(1) ,'" class="first">', $text_first ,'</a>';
+        }
+        if ( $paged > 1 ) {
+            // 「前へ」 の表示
+            echo '<a href="', get_pagenum_link( $paged - 1 ) ,'" class="prev">', $text_before ,'</a>';
+        }
+        for ( $i = 1; $i <= $pages; $i++ ) {
+
+            if ( $i <= $paged + $range && $i >= $paged - $range ) {
+                // $paged +- $range 以内であればページ番号を出力
+                if ( $paged === $i ) {
+                    echo '<span class="current pager">', $i ,'</span>';
+                } else {
+                    echo '<a href="', get_pagenum_link( $i ) ,'" class="pager">', $i ,'</a>';
+                }
+            }
+
+        }
+        if ( $paged < $pages ) {
+            // 「次へ」 の表示
+            echo '<a href="', get_pagenum_link( $paged + 1 ) ,'" class="next">', $text_next ,'</a>';
+        }
+        if ( $paged + $range < $pages ) {
+            // 「最後へ」 の表示
+            echo '<a href="', get_pagenum_link( $pages ) ,'" class="last">', $text_last ,'</a>';
+        }
+        echo '</div>';
+    }
 }

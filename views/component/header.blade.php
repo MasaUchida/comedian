@@ -1,10 +1,10 @@
 @php
 //メニュー設定
 $defaults = array(
-  'menu_class'      => 'header--lists',//ulへのclass名
-  'menu_id'         => 'header--id',//ulへのid名
-  'container'       => 'div',//ul内のタグ
-  'container_class' => 'header--container',//コンテナのクラス
+  'menu_class'      => 'l-header__container',//ulへのclass名
+  'menu_id'         => '',//ulへのid名
+  'container'       => '',//ul内のタグ
+  'container_class' => '',//コンテナのクラス
   'container_id'    => '',
   'fallback_cb'     => 'wp_page_menu',//メニューがないときのコールバック関数
   'before'          => '',
@@ -19,11 +19,11 @@ $defaults = array(
 );
 @endphp
 
-<header>
-    <nav class="cf">
-
+<header class="l-header">
+  <a href="http://localhost:8888/experiment/" class="l-header__image">
+    <div>HOME</div>
+  </a>
       {{wp_nav_menu( $defaults )}}
       
-    </nav>
 </header>
   

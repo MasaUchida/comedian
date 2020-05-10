@@ -1,5 +1,5 @@
-.c-card__container{
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.12);
+.c-card{
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.12);
 }
 
 .c-card__image{
@@ -11,5 +11,8 @@
 
 .c-card__text{
     padding: 0 16px;
-    height: 40%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }

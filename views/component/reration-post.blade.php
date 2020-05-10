@@ -26,6 +26,7 @@
     @php
         $args = array(
         'post_type' => array('comedian','criticism'),
+        'posts_per_page' => 4,
         'tax_query' => array(
                 array(
                     'taxonomy' => $taxonomy_name,
@@ -36,16 +37,17 @@
             ),
         );
         $query = new WP_Query($args);
+        var_dump($query);
     @endphp
 @endif
 
+{{--main loop--}}
 <div class="p-rerationpost__container">
-    {{--main loop--}}
     @if ($query != null)
         @if ($query -> have_posts())
             @while($query -> have_posts())
                 {{$query -> the_post()}}
-                    <div class="c-card__container p-rerationpost__card">
+                    <div class="c-card p-rerationpost__card">
                         <div class="c-card__image" style="background-image:url({{the_post_thumbnail_url()}}) ;"></div>
                         <section class="c-card__text">
                             <h4>{{the_title()}}</h4>

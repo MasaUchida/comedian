@@ -1,0 +1,42 @@
+
+
+.p-criticism__post{
+    padding: 16px;
+    display: flex;
+}
+
+.p-criticism__iamge-container{
+    width: 240px;
+    height: 160px;
+    margin-right: 24px;
+}
+
+.p-criticism__iamge{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p-criticism__text-container{
+    position: relative;
+    width: 60%;
+}
+
+.p-criticism__title{
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.p-criticism__text{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.p-criticism__date{
+    position: absolute;
+    bottom: 0px;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0,0.54);
+}

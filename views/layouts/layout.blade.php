@@ -10,7 +10,7 @@
 <body>
     @include('component.header')
     <main>
-            @yield('index')
+        @yield('index')
     </main>    
     @include('component.footer')
 </body>

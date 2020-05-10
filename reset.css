@@ -32,19 +32,16 @@ img {
   display: block;
 }
 
-article > * + * {
-  margin-top: 1em;
-}
-
+/*article>*+*{
+    margin-top:1em
+}*/
 input, button, textarea, select {
   font: inherit;
 }
 
-img:not([alt]) {
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-}
-
+/*img:not([alt]){
+    filter:blur(10px)
+}*/
 @media (prefers-reduced-motion: reduce) {
   * {
     -webkit-animation-duration: 0.01ms !important;

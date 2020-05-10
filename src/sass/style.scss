@@ -17,7 +17,7 @@ Description: My Theme
 *Layout
 */
 
-
+@import "./Layout/header";
 
 /*
 *Component
@@ -28,7 +28,11 @@ Description: My Theme
 *Project
 */
 
+@import "./Object/Project/index";
+@import "./Object/Project/comedian";
+@import "./Object/Project/criticism";
 @import "./Object/Project/single";
+@import "./Object/Project/archive";
 @import "./Object/Project/rerationpost";
 
 /*

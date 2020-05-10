@@ -31,16 +31,16 @@ img{
     display:block
 }
 
-article>*+*{
+/*article>*+*{
     margin-top:1em
-}
+}*/
 
 input,button,textarea,select{
     font:inherit
 }
 
-img:not([alt]){
+/*img:not([alt]){
     filter:blur(10px)
-}
+}*/
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}

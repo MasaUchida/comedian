@@ -1,40 +1,34 @@
-main{
-    width: 1080px;
+$innerWidth: 1120px;
+
+.p-index__key{
+    margin-bottom: 80px;
+    display: flex;
+}
+
+.p-index__container{
+    width: $innerWidth;
     margin: 0 auto;
-  }
-  
-  .key-container{
     display: flex;
+}
+
+.p-index__main{
+    margin-right: 24px;
+    width: 70%;
+}
+
+.p-index__title{
+    border-bottom: solid 1px #ff0000;
+}
+
+.p-index__post-wrapper{
+    margin-bottom: 64px;
+}
+
+.p-index__comedian-container{
     margin: 0 -16px;
-  }
-  
-  .main-container{
     display: flex;
-  }
-  
-  .comedian {
-    width: 33%;
-    padding: 0 16px;
-  }
-  
-  
-  img{
-    width: 100%;
-  }
-  
-  body{
-    margin: 0;
-    padding: 0;
-  }
-  .post{
-    display: flex;
-    margin-bottom: 32px;
-  
-    .column-img{
-      width: 30%;
-    }
-  }
-  
-  .twitter-share-button{
-    display: block;
-  }
+}
+
+.p-index__sidebar{
+    width: 30%;
+}
